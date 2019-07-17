@@ -1,0 +1,41 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Rubik');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.mce_body {
+    background: #ffffff;
+}
+
+.darkmode {
+    color: #ffffff;
+}
+
+.nav-item:hover {
+    background-color: #d5a767;
+    border-radius: 5px;
+}
+
+.skills_list {
+    font-size: 1.1rem;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.skills_list .fa-angle-right {
+    padding-right: 1rem;
+}
+
+.skills_list li {
+    margin: 0;
+}
+
+.contact_area {
+    font-size: 1.2rem;
+}
