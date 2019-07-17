@@ -15,12 +15,21 @@
                         <form action="{{ route('profile.save')}}" class="form" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="bio">Bio Info:</label>
-                                <textarea class="form-control  @error('bio') is-ivalid @enderror" name="bio" id="bio" rows="5">@if ($has_profile) {{$user->profile->bio}} @endif</textarea>
+                                <label for="bio">Summary Bio Info (for homepage):</label>
+                                <textarea class="form-control tiny @error('bio') is-ivalid @enderror" name="bio" id="bio" rows="5">@if ($has_profile) {{$user->profile->bio}} @endif</textarea>
                                 @error('bio')
                                     <div class="text-danger">
                                         <strong>{{ $message }}</strong>
                                     </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="aboutme">About Me Content:</label>
+                                <textarea class="form-control tiny @error('aboutme') is-ivalid @enderror" name="aboutme" id="aboutme" rows="10">@if ($has_profile && !empty($user->profile->aboutme)) {{$user->profile->aboutme}} @endif</textarea>
+                                @error('aboutme')
+                                <div class="text-danger">
+                                    <strong>{{ $message }}</strong>
+                                </div>
                                 @enderror
                             </div>
                             <div class="form-group">
@@ -106,62 +115,71 @@
                                     </span>
                                 @enderror
                              </div>
-                             <div class="form-check">
+                            <div class="row">
+                                <div class="col-12 form-check">
                                     @error('skills')
                                         <div class="text-danger">
                                             <strong>{{ $message }}</strong>
                                         </div>
                                     @enderror
-                                <label for="skills">Skills: </label>
-                                <h5>Languages</h5>
-                                @foreach ($languages as $language)
-                                    @if (in_array($language->name, $skills_array))
-                                        <input type="checkbox" name="skills[]" value="{{$language->name}}" class="form-check-input" checked >{{$language->name}}<br/>
-                                    @else
-                                        <input type="checkbox" name="skills[]" value="{{$language->name}}" class="form-check-input"/>{{$language->name}}<br />
-                                    @endif
+                                    <label for="skills">Skills</label>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                                            <h6 class="mt-2">Languages</h6>
+                                            @foreach ($languages as $language)
+                                                @if (in_array($language->name, $skills_array))
+                                                    <input type="checkbox" name="skills[]" value="{{$language->name}}" class="form-check-input" checked >{{$language->name}}<br/>
+                                                @else
+                                                    <input type="checkbox" name="skills[]" value="{{$language->name}}" class="form-check-input"/>{{$language->name}}<br />
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                                            <h6 class="mt-2">Databases</h6>
+                                            @foreach ($databases as $database)
+                                                @if (in_array($database->name, $skills_array))
+                                                    <input type="checkbox" name="skills[]" value="{{$database->name}}" class="form-check-input" checked >{{$database->name}}<br/>
+                                                @else
+                                                    <input type="checkbox" name="skills[]" value="{{$database->name}}" class="form-check-input"/>{{$database->name}}<br />
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                                            <h5 class="mt-2">Libraries</h5>
+                                            @foreach ($libraries as $library)
+                                                @if (in_array($library->name, $skills_array))
+                                                    <input type="checkbox" name="skills[]" value="{{$library->name}}" class="form-check-input" checked >{{$library->name}}<br/>
+                                                @else
+                                                    <input type="checkbox" name="skills[]" value="{{$library->name}}" class="form-check-input"/>{{$library->name}}<br />
+                                                @endif
 
-                                @endforeach
-                                <h5>Databases</h5>
-                                @foreach ($databases as $database)
-                                    @if (in_array($database->name, $skills_array))
-                                        <input type="checkbox" name="skills[]" value="{{$database->name}}" class="form-check-input" checked >{{$database->name}}<br/>
-                                    @else
-                                        <input type="checkbox" name="skills[]" value="{{$database->name}}" class="form-check-input"/>{{$database->name}}<br />
-                                    @endif
+                                            @endforeach
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                                            <h5 class="mt-2">Frameworks</h5>
+                                            @foreach ($frameworks as $framework)
+                                                @if (in_array($framework->name, $skills_array))
+                                                    <input type="checkbox" name="skills[]" value="{{$framework->name}}" class="form-check-input" checked >{{$framework->name}}<br/>
+                                                @else
+                                                    <input type="checkbox" name="skills[]" value="{{$framework->name}}" class="form-check-input"/>{{$framework->name}}<br />
+                                                @endif
 
-                                @endforeach
+                                            @endforeach
+                                        </div>
+                                        <div class="col-12">
+                                            <h6 class="mt-2">Other Skills</h6>
+                                            @foreach ($skills as $skill)
+                                                @if (in_array($skill->name, $skills_array))
+                                                    <input type="checkbox" name="skills[]" value="{{$skill->name}}" class="form-check-input" checked >{{$skill->name}}<br/>
+                                                @else
+                                                    <input type="checkbox" name="skills[]" value="{{$skill->name}}" class="form-check-input"/>{{$skill->name}}<br />
+                                                @endif
 
-                                <h5 class="mt-2">Libraries</h5>
-                                @foreach ($libraries as $library)
-                                    @if (in_array($library->name, $skills_array))
-                                        <input type="checkbox" name="skills[]" value="{{$library->name}}" class="form-check-input" checked >{{$library->name}}<br/>
-                                    @else
-                                        <input type="checkbox" name="skills[]" value="{{$library->name}}" class="form-check-input"/>{{$library->name}}<br />
-                                    @endif
-
-                                @endforeach
-
-                                <h5 class="mt-2">Frameworks</h5>
-                                @foreach ($frameworks as $framework)
-                                    @if (in_array($framework->name, $skills_array))
-                                        <input type="checkbox" name="skills[]" value="{{$framework->name}}" class="form-check-input" checked >{{$framework->name}}<br/>
-                                    @else
-                                        <input type="checkbox" name="skills[]" value="{{$framework->name}}" class="form-check-input"/>{{$framework->name}}<br />
-                                    @endif
-
-                                @endforeach
-
-                                <h5 class="mt-2">Other Skills</h5>
-                                @foreach ($skills as $skill)
-                                    @if (in_array($skill->name, $skills_array))
-                                        <input type="checkbox" name="skills[]" value="{{$skill->name}}" class="form-check-input" checked >{{$skill->name}}<br/>
-                                    @else
-                                        <input type="checkbox" name="skills[]" value="{{$skill->name}}" class="form-check-input"/>{{$skill->name}}<br />
-                                    @endif
-
-                                @endforeach
-                             </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                              <div class="form-group">
                                  <input type="submit" class="btn btn-primary btn-block mt-2" value="Save Profile" />
                              </div>
@@ -173,7 +191,7 @@
     </div>
     <script>
         tinymce.init({
-            selector:'#bio',
+            selector:'.tiny',
             plugins: 'link, image, lists, code',
             toolbar: 'undo redo | styleselect | bold italic underline | outdent indent | numlist bullist | link unlink | image',
             body_class: 'mce_body',

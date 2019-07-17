@@ -43,6 +43,7 @@ class ProfileController extends Controller
         }
 
             $profile->bio=$request->bio;
+            $profile->aboutme=$request->aboutme;
             $profile->phone=$request->phone;
 
             //checks the nullable fields from the form to see if there are
@@ -166,6 +167,7 @@ class ProfileController extends Controller
 
         $this->validate($request, [
             'bio'=>'required',
+            'aboutme'=>'required',
             'phone'=>'required',
             'github_url'=>'nullable | url',
             'linkedin_url'=>'nullable | url',
@@ -173,7 +175,6 @@ class ProfileController extends Controller
             'facebook_url'=>'nullable | url',
             'twitter_url'=>'nullable | url',
             'skype_name'=>'nullable',
-            'photo'=>'required|file',
             'skills'=>'required | array'
         ]);
 

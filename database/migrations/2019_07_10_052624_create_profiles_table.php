@@ -18,6 +18,7 @@ class CreateProfilesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->text('skills');
             $table->text('bio');
+            $table->text('aboutme');
             $table->string('video_url')->nullable();
             $table->string('photo')->nullable();
             $table->string('phone');

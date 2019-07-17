@@ -10,7 +10,7 @@ class MainController extends Controller {
 
     public function index(){
 
-        $user = User::where('email', 'rcol4jc@hotmail.com')->firstOrFail();
+        $user = User::first();
 
 
 
@@ -19,6 +19,12 @@ class MainController extends Controller {
     }
 
     public function about(){
+
+        $user = User::first();
+
+
+
+        return view('about',['user'=>$user]);
 
 
     }
