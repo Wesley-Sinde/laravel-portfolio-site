@@ -12,14 +12,14 @@
         <a class="btn btn-secondary d-block mb-3" href="{{ route('profile.show')}}">Edit Profile</a>
     @endauth
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-5 col-xl-4">
-            <img class="img-fluid rounded d-block" src="{{ asset('storage/'.$user->profile->photo)}}" />
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+            <img class="img-fluid rounded" style="min-width:100%;" src="{{ asset('storage/' . 'thumb_'. $user->profile->photo)}}" />
             @php
                 $skill_array=explode(',', $user->profile->skills)
             @endphp
 
             <div class="row mb-3">
-                <div class="mx-auto col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="col">
                     <h2 class="mt-3">Skills</h2>
                     <ul class="mt-2 skills_list">
                     @foreach ($skill_array as $skill)
@@ -32,7 +32,7 @@
 
 
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-7 col-xl-8">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
             <h2>Info</h2>
             {!! $user->profile->bio !!}
 

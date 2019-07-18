@@ -15,7 +15,7 @@ Route::get('/', 'MainController@index')->name('root');
 Route::get('/about', 'MainController@about')->name('about');
 
 
-Auth::routes();
+Auth::routes(['register'=>false]);
 Route::get('/profile', 'ProfileController@index')->middleware('auth')->name('profile.show');
 Route::post('/profile/save', 'ProfileController@save')->middleware('auth')->name('profile.save');
 Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');

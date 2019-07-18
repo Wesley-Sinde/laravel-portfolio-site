@@ -165,7 +165,21 @@ class ProfileController extends Controller
 
         $user=Auth::user();
 
-        $this->validate($request, [
+        $new_validate_rules=[
+            'bio'=>'required',
+            'aboutme'=>'required',
+            'phone'=>'required',
+            'github_url'=>'nullable | url',
+            'linkedin_url'=>'nullable | url',
+            'youtube_url'=>'nullable | url ',
+            'facebook_url'=>'nullable | url',
+            'twitter_url'=>'nullable | url',
+            'skype_name'=>'nullable',
+            'photo'=>'required | file',
+            'skills'=>'required | array'
+        ];
+
+        $existing_validate_rules=[
             'bio'=>'required',
             'aboutme'=>'required',
             'phone'=>'required',
@@ -176,14 +190,20 @@ class ProfileController extends Controller
             'twitter_url'=>'nullable | url',
             'skype_name'=>'nullable',
             'skills'=>'required | array'
-        ]);
+        ];
+
+
 
 
         if ($user->profile()->exists()){
 
+            $this->validate($request, $existing_validate_rules);
+
             $this->saveProfile($request,false,$user);
 
         } else {
+
+            $this->validate($request, $new_validate_rules);
 
             $this->saveProfile($request,true,$user);
         }
