@@ -10,7 +10,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://cdn.tiny.cloud/1/kmjgxgoxyepk3ki22tvv9wrowx4vn30vy96tpaefvub1on59/tinymce/5/tinymce.min.js"></script>
+    
     <script src="https://kit.fontawesome.com/c406f80329.js"></script>
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
