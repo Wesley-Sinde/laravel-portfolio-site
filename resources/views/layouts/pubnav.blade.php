@@ -30,6 +30,9 @@
                         </div>
                     </li>
                     @endauth
+                    @guest
+                        <a class="nav-item nav-link" href="{{route('login')}}">Login</a>
+                        @endguest
                 <a class="nav-item nav-link" href="{{route('project.index')}}">Projects</a>
                 <a class="nav-item nav-link" href="{{route('about')}}">About Me</a>
                 <a class="nav-item nav-link" href="{{route('root')}}/#contact">Contact</a>
