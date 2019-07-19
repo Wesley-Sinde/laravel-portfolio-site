@@ -84,7 +84,7 @@ class ProjectController extends Controller
 
         $project->languages=$languages_string;
 
-        if (count($request->frameworks) != 0){
+        if (isset($request->frameworks)){
             $frameworks_string='';
 
             foreach ($request->frameworks as $framework){
@@ -96,7 +96,7 @@ class ProjectController extends Controller
             $project->frameworks=$frameworks_string;
         }
 
-        if (count($request->libraries) != 0){
+        if (isset($request->libraries)){
             $libraries_string='';
 
             foreach ($request->libraries as $library){
@@ -108,7 +108,7 @@ class ProjectController extends Controller
             $project->libraries=$libraries_string;
         }
 
-        if (count($request->databases) != 0){
+        if (isset($request->databases)){
             $databases_string='';
 
             foreach ($request->databases as $database){
@@ -207,7 +207,7 @@ class ProjectController extends Controller
 
         $project->languages=$languages_string;
 
-        if (count($request->frameworks) != 0){
+        if (isset($request->frameworks)){
             $frameworks_string='';
 
             foreach ($request->frameworks as $framework){
@@ -219,7 +219,7 @@ class ProjectController extends Controller
             $project->frameworks=$frameworks_string;
         }
 
-        if (count($request->libraries) != 0){
+        if (isset($request->libraries)) {
             $libraries_string='';
 
             foreach ($request->libraries as $library){
@@ -231,7 +231,7 @@ class ProjectController extends Controller
             $project->libraries=$libraries_string;
         }
 
-        if (count($request->databases) != 0){
+        if (isset($request->databases)){
             $databases_string='';
 
             foreach ($request->databases as $database){

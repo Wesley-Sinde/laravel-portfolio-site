@@ -89,10 +89,10 @@ class ProfileController extends Controller
 
 
                 //If this is a change and not a new profile, delete the old images
-                if (!$isNew){
+                /*if (!$isNew){
                     Storage::disk('public')->delete($profile->photo);
                     Storage::disk('public')->delete('thumb_' . $profile->photo);
-                }
+                }*/
 
 
                 $bio_photo = $request->file('photo');
