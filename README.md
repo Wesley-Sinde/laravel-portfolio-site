@@ -31,7 +31,7 @@ source and you may clone it and modify to your heart's content
 5. Cd into that directory.
 6. Run 'composer install'
 7. Run 'npm install'
-8. copy .env.exmple file to .env
+8. copy .env.example file to .env
 9. Type 'php artisan key:generate'
 10. Type 'php artisan storage:link' to add public storage access.
 11. Edit the .env (not .env.example) and under the mysql settings, put in your database name, username, and password from step 2.
