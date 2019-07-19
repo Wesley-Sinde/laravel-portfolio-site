@@ -41,6 +41,7 @@ source and you may clone it and modify to your heart's content
 15. After registration, it will send you immediately to the profile setup page where you can put in all of your information as if you are trying to find a job. A photo is required.
 16. You will be redirected to the home page with your information set.
 17. (optional) You might want to edit the web.php under routes and disable the register link. There are notes in the web.php on how to do that.
+18. I have used tiny_mce on the text areas on the project and profile page. You can go to the tiny_mce site to get your own custom script url Once you do that, you can put that in the head area of the public.blade.php in the layouts folder. 
 
 
 ## Demo live
